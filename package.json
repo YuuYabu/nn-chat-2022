@@ -8,6 +8,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "http-auth": "4.1.9",
     "pug": "3.0.2"
   }
 }
