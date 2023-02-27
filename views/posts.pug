@@ -16,7 +16,8 @@ html(lang='ja')
         textarea(name="content", rows="4").form-control.bg-secondary.text_white
       div.form-group
         button(type="submit").btn.btn-primary 送信
-    
+    a(href="/changeTheme").btn.btn-primary.mb-3 ライトモード・ダークモード切り替え
+
     each post in posts
       - let cardClass = (user === post.postedBy ? "card my-3 bg-primary text-white" : "card my-3 bg-secondary")
       div(class=`${cardClass}`)
