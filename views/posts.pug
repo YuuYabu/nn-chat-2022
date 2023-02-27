@@ -7,19 +7,20 @@ html(lang='ja')
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm",
     crossorigin="anonymous")
     title NNチャット
-  body.container.bg-dark.text-white
+  body(class=(currentTheme === "light" ? "container" : "container bg-dark text-white"))
     div.my-3
       a(href="/logout").btn.btn-info.float-right ログアウト
       h1 NNチャット
     form(action="/posts" method="post")
       div.form-group
-        textarea(name="content", rows="4").form-control.bg-secondary.text_white
+        textarea(name="content", rows="4" class=(currentTheme === "light" ? "form-control" : "form-control bg-secondary text_white"))
       div.form-group
         button(type="submit").btn.btn-primary 送信
-    a(href="/changeTheme").btn.btn-primary.mb-3 ライトモード・ダークモード切り替え
+    a(href="/changeTheme").btn.btn-primary.mb-3 #{currentTheme==="light"?"ダークモード":"ライトモード"}へ切り替え
 
+    - let defaultCardClass = (currentTheme === "light" ? "card my-3" : "card my-3 bg-secondary text-white")
     each post in posts
-      - let cardClass = (user === post.postedBy ? "card my-3 bg-primary text-white" : "card my-3 bg-secondary")
+      - let cardClass = (user === post.postedBy ? "card my-3 bg-primary text-white" : defaultCardClass)
       div(class=`${cardClass}`)
         - let isDeletable = (user === post.postedBy || user === "admin")
         if isDeletable
