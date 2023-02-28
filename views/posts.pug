@@ -14,6 +14,7 @@ html(lang='ja')
     form(action="/posts" method="post")
       div.form-group
         textarea(name="content", rows="4" class=(currentTheme === "light" ? "form-control" : "form-control bg-secondary text_white"))
+        input(type="hidden", name="oneTimeToken" value=oneTimeToken)
       div.form-group
         button(type="submit").btn.btn-primary 送信
     a(href="/changeTheme").btn.btn-primary.mb-3 #{currentTheme==="light"?"ダークモード":"ライトモード"}へ切り替え
